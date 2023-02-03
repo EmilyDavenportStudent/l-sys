@@ -10,9 +10,9 @@ mod graph;
 use graph::graph_system_expression;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let mut s = System::from_axiom("F");
-    s.add_rule("F=>F+F-F-F-G+F+F+F-F");
-    s.add_rule("G=>GGG");
+    let mut s = System::from_axiom("A");
+    s.add_rule("A=>+BF-AFA-FB+");
+    s.add_rule("B=>-AF+BFB+FA-");
     graph_system_expression(s.do_n_iterations(4), 90.0)?;
     Ok(())
 }

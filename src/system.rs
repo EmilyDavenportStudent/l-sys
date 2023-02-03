@@ -8,6 +8,7 @@ pub enum BaseSymbols {
     ForwardNoLine,
     AngleIncrement,
     AngleDecrement,
+    NoAction,
 }
 
 impl Display for BaseSymbols {
@@ -20,6 +21,7 @@ impl Display for BaseSymbols {
                 BaseSymbols::ForwardNoLine => 'f',
                 BaseSymbols::AngleIncrement => '+',
                 BaseSymbols::AngleDecrement => '-',
+                BaseSymbols::NoAction => ' ',
             }
         )
     }
@@ -99,10 +101,11 @@ fn derive_base_symbols(s: String) -> SystemExpression {
     SystemExpression(
         s.chars()
             .map(|c| match c {
+                'F' => BaseSymbols::Forward,
                 'f' => BaseSymbols::ForwardNoLine,
                 '+' => BaseSymbols::AngleIncrement,
                 '-' => BaseSymbols::AngleDecrement,
-                _ => BaseSymbols::Forward,
+                _ => BaseSymbols::NoAction,
             })
             .collect(),
     )

@@ -36,6 +36,7 @@ impl Turtle {
                     lines.push(current_line);
                     current_line = vec![coord];
                 }
+                BaseSymbols::NoAction => (),
             }
         }
         lines.push(current_line);
